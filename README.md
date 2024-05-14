@@ -10,6 +10,10 @@
 
 ### Project Overview
 This project analyzes the world population in 2023, focusing on regions and countries. It examines total populations, fertility rate, net migration, land area, average age, and world share. By uncovering trends and patterns, it provides valuable insights for policymakers and researchers. 
+![Analysis_by_Region](https://github.com/Sacadmohamed/World_Population_2023_Analysis/assets/169648149/cad9827d-d7df-4a7b-88a6-349d560e34d5)
+
+![Analysis_by_Country](https://github.com/Sacadmohamed/World_Population_2023_Analysis/assets/169648149/d02cb789-778b-4c4b-afd0-cb0b8dba27ff)
+
 
 ### Data Source
 The primary data sources for this project are "world_country_stats.csv" and  "world_population_by_country_2023.csv" from Kaggle under this [link](https://www.kaggle.com/datasets/chandanchoudhury/world-population-dataset).
