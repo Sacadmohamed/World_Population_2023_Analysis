@@ -1,6 +1,9 @@
 # World_Population_Analysis_2023
 ## Table of Contents
--[Project Overview](project-overview)
+- [Project Overview](#project-overview)
+- [Data Source](#data-source)
+- [Tools](#tools)
+- [Data Cleaning, Verification, and Preparation](#data-cleaning-verification-and-preparation)
 
 
 ### Project Overview
