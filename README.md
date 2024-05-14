@@ -1,4 +1,8 @@
 # World_Population_Analysis_2023
+## Table of Contents
+-[Project Overview](project-overview)
+
+
 ### Project Overview
 This project analyzes the world population in 2023, focusing on regions and countries. It examines total populations, fertility rate, net migration, land area, average age, and world share. By uncovering trends and patterns, it provides valuable insights for policymakers and researchers. 
 
@@ -127,3 +131,8 @@ order by total_net_migrants_byregion asc
 ```
 
 ### Results/Findings
+Summary
+1. The global population is approximately 8 billion, with Asia having the highest population and Australia the lowest.
+2. Africa has the highest fertility rate (3.7), while North America and Europe have the lowest (1.5 each).
+3. The average age in Europe and North America is relatively high (41), whereas Africa has a younger average age (22).
+4. North America and Europe are experiencing significant influxes of migrants (1.2 million and 0.8 million respectively), while Africa and Asia are witnessing the highest departures (0.5 million and 1.5 million respectively).
