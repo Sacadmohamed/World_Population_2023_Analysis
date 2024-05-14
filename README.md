@@ -17,13 +17,113 @@ The primary data sources for this project are "world_country_stats.csv" and  "wo
 
 For the selection of the two uploaded tables
 ``` SQL
-
+/* Selecting the two tables*/
+select * from [dbo].[world_country_stats]
+select * from [dbo].[world_population_by_country_2023]
 ```
 
 
 For the verification of the data types of the columns
 ``` SQL
+/* verify data types of columns*/
 select COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH, NUMERIC_PRECISION, NUMERIC_SCALE
 from INFORMATION_SCHEMA.COLUMNS
 where TABLE_NAME = 'world_population_by_country_2023';
 ```
+
+Check the presence of Duplicates in the Country column
+``` SQL
+/* Check if there are duplicates in the country column*/
+select country, COUNT(*) AS Country_count
+from [dbo].[world_population_by_country_2023]
+group by [country]
+HAVING COUNT(*) > 1
+```
+
+Handling the missing values
+``` SQL
+/* Handling missing values of population_urban column*/
+update [dbo].[world_population_by_country_2023]
+set population_urban = 0
+where population_urban IS NULL
+
+/* Handling missing values of fertility_rate column*/
+update [dbo].[world_population_by_country_2023]
+set fertility_rate = 0
+where fertility_rate IS NULL
+
+/* Handling missing values of median_age column*/
+update [dbo].[world_population_by_country_2023]
+set median_age = 0
+where median_age IS NULL
+```
+
+### Data Manipulation and Analysis
+Joining the two tables on the basis of the country column
+``` SQL
+/* Join the two tables world_country_stat and World_pop_by_country_2023 on country basis*/
+SELECT [dbo].[world_population_by_country_2023].*, [dbo].[world_country_stats].[region]
+from [dbo].[world_population_by_country_2023] inner join 
+[dbo].[world_country_stats]
+on [dbo].[world_population_by_country_2023].[country] = [dbo].[world_country_stats].[country]
+```
+
+Creating the region column in table 1 and copying data from table 2 by making an inner join
+``` SQL
+/* create a region column in World_pop_by_country_2023*/
+ALTER TABLE [dbo].[world_population_by_country_2023]
+ADD region varchar(50) null
+
+/* Copy the column region from world_pop_stat table*/
+UPDATE [dbo].[world_population_by_country_2023]
+SET [dbo].[world_population_by_country_2023].[region] = [dbo].[world_country_stats].[region]
+FROM [dbo].[world_population_by_country_2023]
+inner join [dbo].[world_country_stats]
+on [dbo].[world_population_by_country_2023].[country] = [dbo].[world_country_stats].[country]
+```
+
+Total Population by Region
+``` SQL
+/* Aggregate by region in the total population in the world pop 2023 */
+select [region], SUM([population]) AS Total_Population_by_region
+from [dbo].[world_population_by_country_2023]
+group by [region]
+order by Total_Population_by_region desc
+```
+
+Land area by Region
+``` SQL
+/* Aggregate by region in the land area in the world pop by country */
+select [region], SUM([land_area]) as Total_land_region
+from [dbo].[world_population_by_country_2023] 
+group by region
+order by Total_land_region desc
+```
+
+Average Fertility by Region
+``` SQL
+/* Aggregate Average fertility by region in the world pop 2023 */
+select [region], AVG([fertility_rate]) AS AvG_Fertility_by_region
+from [dbo].[world_population_by_country_2023]
+group by [region]
+order by [AvG_Fertility_by_region] desc
+```
+
+Average Age by Region
+``` SQL
+/* Aggregate Average age by region in the world pop 2023 */
+select [region], AVG([median_age]) AS median_age_by_region
+from [dbo].[world_population_by_country_2023]
+group by [region]
+order by median_age_by_region desc
+
+Total Net Migrants by Region
+``` SQL
+/* Total net migrants by region in the world pop 2023 */
+select [region], SUM([net_migrants]) AS total_net_migrants_byregion
+from [dbo].[world_population_by_country_2023]
+group by [region]
+order by total_net_migrants_byregion asc
+```
+
+### Results/Findings
