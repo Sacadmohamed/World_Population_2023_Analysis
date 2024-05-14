@@ -4,6 +4,8 @@
 - [Data Source](#data-source)
 - [Tools](#tools)
 - [Data Cleaning, Verification, and Preparation](#data-cleaning-verification-and-preparation)
+- [Data Manipulation and Analysis](#data-manipulation-and-analysis)
+- [Results/Findings](#resultsfindings)
 
 
 ### Project Overview
